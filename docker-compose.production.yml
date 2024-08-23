@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    image: bkimminich/juice-shop:latest
+    container_name: juice_shop_production
+    ports:
+      - "80:3000"  # Utilisez le port 80 pour la production (HTTP)
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+    volumes:
+      - juice_shop_data:/data
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  juice_shop_data:
+    driver: local

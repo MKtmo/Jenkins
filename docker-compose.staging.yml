@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    image: bkimminich/juice-shop:latest
+    container_name: juice_shop_staging
+    ports:
+      - "8081:3000"  # Utilisez un port différent pour staging afin d'éviter les conflits avec la production
+    environment:
+      - NODE_ENV=staging
+    networks:
+      - app-network
+    volumes:
+      - juice_shop_data:/data
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  juice_shop_data:
+    driver: local
