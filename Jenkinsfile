@@ -2,10 +2,10 @@ pipeline {
     agent any
     
     stages {
-        
         stage('Checkout') {
             steps {
-                git 'https://github.com/MKtmo/Jenkins.git'
+                // Assurez-vous que vous récupérez la branche correcte
+                git branch: 'main', url: 'https://github.com/MKtmo/Jenkins.git'
             }
         }
         
